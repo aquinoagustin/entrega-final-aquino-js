@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <title>Preentrega 3 Aquino Luciano Agustin</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header style="background-color: #aaa">
+        <h1 class="text-center">Eccomerce</h1>
+      </header>
+      <section>
+        <form id="formulario">
+          <h2>Registro de usuarios</h2>
+          <label for="nombre">
+            Nombre
+            <input type="text" required name="nombre" id="nombre" placeholder="Su nombre" />
+          </label>
+          <label for="password">
+            PassWord:
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Su password"
+              required
+            />
+          </label>
+          <input type="button" value="Register" class="btn btn-success" onclick="enviarDatos()"/>
+          <input type="button" value="borrar" class="btn btn-danger" onclick="borrarCampos()">
+        </form>
+      </section>
+      <section id="login"> 
+        <form id="formularioLogin">
+          <h2>Iniciar sesion</h2>
+          <label for="nombre">
+            Nombre
+            <input type="text" required name="nombre" id="nombreLogin" placeholder="Su nombre" />
+          </label>
+          <label for="password">
+            PassWord:
+            <input
+              type="password"
+              name="password"
+              id="passwordLogin"
+              placeholder="Su password"
+              required
+            />
+          </label>
+          <input type="button" value="Login" class="btn btn-success" onclick="enviarDatosLogin()"/>
+        </form>
+      </section>
+      <hr>
+      <main>
+        <section>
+          <div>
+            <input type="text" class="form-control m-3" id="busqueda" placeholder="Buscar nombre o precio maximo que desea pagar">
+            <button onclick="encontrarProductoNombre()" class="btn btn-primary">Buscar</button>
+            <button onclick="borrarFiltros()" class="btn btn-danger">Borrar</button>
+          </div>
+         
+        </section>
+        <div class="row" id="card">
+
+        </div>
+        <hr>
+        <h2>Carrito
+          <h2 id="carritoTotal"></h2>
+        </h2>
+        <div id="carrito" class="row">
+        
+          
+        </h2>  
+        </div>
+      </main>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/productos.js"></script>
+    <script src="js/logica.js"></script>
+  </body>
+</html>
