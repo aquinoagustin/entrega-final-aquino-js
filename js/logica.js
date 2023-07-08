@@ -15,13 +15,16 @@ let contenedorCarritoTotal = document.getElementById('carritoTotal')
 // Por defecto llamamos a la funcion para siempre mostrar los estudiantes al comienzo
 //renderizarAlumnos(students)
 renderizarProductos(producto)
-
-
-
-const carro = JSON.parse(localStorage.getItem('carro')) 
+let carro = [];
+    
+if(carro = JSON.parse(localStorage.getItem('carro')) ){
     renderizarProductosCarro(carro)
+}else{
+    carro = [];
+    localStorage.setItem('carro',JSON.stringify(carro))
+}
 
-|| [];
+
 
 // Esta funcion renderiza los productos por medio de un for of 
 
@@ -53,6 +56,7 @@ function renderizarProductosCarro(lista){
             <h5 class="card-title" id="card-h5">${product.name}</h5>
             <h4 class="card-title">${product.price}</h4>
             <p class="card-text">${product.description}</p>
+            <p class="card-text">${product.stock}</p>
             <button id="${product.id}" class="btn btn-danger compra">Borrar</button>
             </div>
         </div>
