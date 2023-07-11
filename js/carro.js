@@ -108,8 +108,8 @@ for(const boton of botonesEliminar){
             if(lugar!=-1){
                 let totalT = localStorage.getItem("total");
                 totalT = totalT - carro[lugar].price;
-                carro[lugar] = [];
-                localStorage.setItem('carro',JSON.stringify(carro))
+                localStorage.removeItem('carro',JSON.stringify(carro[lugar]))
+              //  localStorage.setItem('carro',JSON.stringify(carro))
                 localStorage.setItem('total',totalT)
                 console.log(JSON.parse(localStorage.getItem('carro')))
 
