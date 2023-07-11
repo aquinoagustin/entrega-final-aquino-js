@@ -17,58 +17,24 @@
   </head>
 
   <body>
+
     <div class="container">
       <header style="background-color: #aaa">
         <h1 class="text-center">Eccomerce</h1>
       </header>
-      <section>
-        <form id="formulario">
-          <h2>Registro de usuarios</h2>
-          <label for="nombre">
-            Nombre
-            <input type="text" required name="nombre" id="nombre" placeholder="Su nombre" />
-          </label>
-          <label for="password">
-            PassWord:
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Su password"
-              required
-            />
-          </label>
-          <input type="button" value="Register" class="btn btn-success" onclick="enviarDatos()"/>
-          <input type="button" value="borrar" class="btn btn-danger" onclick="borrarCampos()">
-        </form>
-      </section>
-      <section id="login"> 
-        <form id="formularioLogin">
-          <h2>Iniciar sesion</h2>
-          <label for="nombre">
-            Nombre
-            <input type="text" required name="nombre" id="nombreLogin" placeholder="Su nombre" />
-          </label>
-          <label for="password">
-            PassWord:
-            <input
-              type="password"
-              name="password"
-              id="passwordLogin"
-              placeholder="Su password"
-              required
-            />
-          </label>
-          <input type="button" value="Login" class="btn btn-success" onclick="enviarDatosLogin()"/>
-        </form>
-      </section>
       <hr>
       <main>
+        <nav class="navbar bg-body-tertiary">
+          <div class="container-fluid">
+            <a class="navbar-brand">Navbar</a>
+              <input type="text" class="form-control w-75" id="busqueda" placeholder="Buscar por nombre">
+              <button onclick="encontrarProductoNombre()" class="btn btn-outline-success">Buscar</button>
+          </div>
+        </nav>
         <section>
           <div>
-            <input type="text" class="form-control m-3" id="busqueda" placeholder="Buscar nombre o precio maximo que desea pagar">
-            <button onclick="encontrarProductoNombre()" class="btn btn-primary">Buscar</button>
-            <button onclick="borrarFiltros()" class="btn btn-danger">Borrar</button>
+            <button onclick="borrarFiltros()" class="btn btn-danger">Borrar todos los filtros</button>
+            <button onclick="filtrarPorPrecioButton()" class="btn btn-warning">Filtrar por precio</button>
           </div>
          
         </section>
@@ -98,5 +64,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/productos.js"></script>
     <script src="js/logica.js"></script>
+    <script src="js/carro.js"></script>
+    <script src="js/filtrosyalerts.js"></script>
   </body>
 </html>
