@@ -18,7 +18,6 @@ else{
 function renderizarProductosCarro(lista){
     contenedorCarrito.innerHTML = '';
     for(const product of lista){
-        if(product.stock>0){
             contenedorCarrito.innerHTML += `
             <div class="card col-sm-2 m-3" style="width:18rem">
                 <img src="${product.image}" class="card-img-top" alt="...">
@@ -26,11 +25,12 @@ function renderizarProductosCarro(lista){
                 <h5 class="card-title" id="card-h5">${product.name}</h5>
                 <h4 class="card-title">${product.price}</h4>
                 <p class="card-text">${product.description}</p>
+                <p class="card-text">Cantidad: ${product.cantidad}</p>
+                <button id="${product.id}" class="btn btn-success agregar">Agregar</button>
                 <button id="${product.id}" class="btn btn-danger borrar">Borrar</button>
                 </div>
             </div>
             `
-        }
         
     }
     let total = localStorage.getItem('total');
@@ -51,20 +51,39 @@ for(const boton of botones){
         const prodACarro = producto.find((item)=>item.id == boton.id);
         console.log(prodACarro);
         agregarACarrito(prodACarro);
+       
     })
-}
+}    
 
 
 // funcion donde agregamos productos al carrito
 function agregarACarrito(item){
-    carro.push(item)
-    console.table(carro);
     let total = carro.reduce((ac,producto)=> ac + producto.price,0)
+    const repetido = carro.some((prod)=> prod.id == item.id);
+    if(repetido){
+        carro.map((prod)=>{
+            if(prod.id == item.id){
+                prod.cantidad++
+            }
+        })
+    }else{
+        carro.push({
+            id:item.id,
+            name:item.name,
+            price:item.price,
+            description:item.description,
+            image:item.image,
+            cantidad:item.cantidad,
+        })
+    }
+    console.table(carro);
+    total = carro.reduce((ac,producto)=> ac + producto.price*producto.cantidad,0)
+    localStorage.setItem('total',total)
     localStorage.setItem('carro',JSON.stringify(carro)) // cargamos el objeto al localStorage
-    localStorage.setItem('total',total) // Cargamos el total del carrito al localStorage
     alertAceptado(item)
+    console.log(repetido)
+    renderizarProductosCarro(carro)
 }
-
 
 // Esta funcion vacía el carrito en el array y en el LocalStorage
 
@@ -72,6 +91,7 @@ function vaciarCarrito(){
     carro = [];
     localStorage.setItem('carro',JSON.stringify(carro))
     localStorage.setItem('total',0)
+    renderizarProductosCarro(carro)
 }
 
 // Este evento llama a una funcion anonima, que simula la finalizacion de una compra y borra el carrito
@@ -103,7 +123,7 @@ let botonesEliminar  = document.getElementsByClassName('borrar');
 for(const boton of botonesEliminar){
     boton.addEventListener('click',()=>{
         const prodACarroEliminar = carro.find((item)=>item.id == boton.id);
-        if(prodACarroEliminar){
+        if(prodACarroEliminar && prodACarroEliminar.cantidad==1){
             let lugar = carro.indexOf(prodACarroEliminar)
             if(lugar!=-1){
                 let totalT = localStorage.getItem("total");
@@ -115,6 +135,20 @@ for(const boton of botonesEliminar){
 
             }
             
+        }else{
+            let totalT = localStorage.getItem("total");
+            const repetido = carro.some((prod)=> prod.id == boton.id);
+            if(repetido){
+                carro.map((prod)=>{
+                    if(prod.id == boton.id){
+                        prod.cantidad--
+                        totalT = totalT - prod.price;
+                        localStorage.setItem('total',totalT);
+                    }
+                })
+            }
+            localStorage.setItem('carro',JSON.stringify(carro))
         }
+        renderizarProductosCarro(carro)
     })
 }

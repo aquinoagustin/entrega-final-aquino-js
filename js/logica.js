@@ -16,7 +16,6 @@ renderizarProductos(producto)
 function renderizarProductos(lista){
     contenedorCard.innerHTML = '';
     for(const product of lista){
-        if(product.stock>0){
             contenedorCard.innerHTML += `
         <div class="card col-sm-2 m-3" style="width:18rem">
             <img src="${product.image}" class="card-img-top" alt="...">
@@ -24,14 +23,11 @@ function renderizarProductos(lista){
             <h5 class="card-title" id="card-h5">${product.name}</h5>
             <h4 class="card-title">${product.price}</h4>
             <p class="card-text">${product.description}</p>
-            <p class="card-text">Stock disponible:${product.stock}</p>
             <button id="${product.id}" class="btn btn-primary compra">Agregar al carrito</button>
             </div>
         </div>
         `
-        }
-    }
-    
+    } 
 }
 
 // Esta funcion borra los campos del formulario
