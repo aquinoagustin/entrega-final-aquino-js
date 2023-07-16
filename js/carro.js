@@ -1,4 +1,4 @@
-// Vaciamos nuestro array de carrito
+
 let carro = [];
 
 // Hacemos una consulta a nuestro LocalStorage, para saber si tenemos productos cargados
@@ -27,7 +27,7 @@ function renderizarProductosCarro(lista){
                 <h4 class="card-title">${product.price}</h4>
                 <p class="card-text">${product.description}</p>
                 <p class="card-text">Cantidad: ${product.cantidad}</p>
-                <button id="${product.id}" class="btn btn-success agregar">Agregar</button>
+                <button id="${product.id}" class="btn btn-success compra">Agregar</button>
                 <button id="${product.id}" class="btn btn-danger borrar">Borrar</button>
                 </div>
             </div>
@@ -35,22 +35,14 @@ function renderizarProductosCarro(lista){
         
     }
     let total = localStorage.getItem('total');
-    console.log("el total:"+total)
-    if(total!=0 || total!=undefined || total!= null){
+    contenedorCarritoTotal.innerHTML='';
+    if(total==0 || total == null){
         contenedorCarritoTotal.innerHTML='';
-        if(total==0){
-            contenedorCarritoTotal.innerHTML='';
-        }else{
-            contenedorCarritoTotal.innerText= `Total: ${total}`
-        }
     }else{
-        console.log("Falso")
+        contenedorCarritoTotal.innerText= `Total: ${total}`
     }
        
 }
-
-
-
 
 
 // Evento practicado, en donde agragamos productos al carrito
@@ -58,7 +50,6 @@ let botones  = document.getElementsByClassName('compra');
 for(const boton of botones){
     boton.addEventListener('click',()=>{
         const prodACarro = producto.find((item)=>item.id == boton.id);
-        console.log(prodACarro);
         agregarACarrito(prodACarro);
     })
 }    
@@ -84,14 +75,12 @@ function agregarACarrito(item){
             cantidad:item.cantidad,
         })
     }
-    console.table(carro);
     total = carro.reduce((ac,producto)=> ac + producto.price*producto.cantidad,0)
     if(total!=0){
         localStorage.setItem('total',total)
     }
     localStorage.setItem('carro',JSON.stringify(carro)) // cargamos el objeto al localStorage
     alertAceptado(item)
-    console.log(repetido)
     renderizarProductosCarro(carro)
 }
 
@@ -134,15 +123,12 @@ let botonesEliminar  = document.getElementsByClassName('borrar');
 for(const boton of botonesEliminar){
     boton.addEventListener('click',()=>{
         let totalT = localStorage.getItem("total");
-        console.log("asd"+boton.id)
     const index = carro.findIndex(producto => producto.id == boton.id);
-    console.log(index)
     if(index!=-1){
         if(carro[index].cantidad==1){
             totalT = totalT - carro[index].price;
             localStorage.setItem('total',totalT)
             carro.splice(index, 1);
-            console.log("111")
         }
         else{
             if(carro[index].cantidad>1){

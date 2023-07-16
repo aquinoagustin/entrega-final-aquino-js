@@ -1,3 +1,5 @@
+
+
 // Declaramos las variables que vamos a utilizar
 let contenedorNombre = document.getElementById('nombre');
 let contenedorPassword = document.getElementById('password');
@@ -9,9 +11,15 @@ let contenedorNombreLogin = document.getElementById('nombreLogin')
 let contenedorPasswordLogin = document.getElementById('passwordLogin')
 let contenedorCarritoTotal = document.getElementById('carritoTotal')
 // Por defecto llamamos a la funcion para siempre mostrar los productos al comienzo
-renderizarProductos(producto)
 
 // Esta funcion renderiza los productos por medio de un for of 
+/*
+let producto;
+obtenerJsonProds();
+console.table(producto);
+*/
+
+renderizarProductos(producto)
 
 function renderizarProductos(lista){
     contenedorCard.innerHTML = '';
@@ -23,10 +31,11 @@ function renderizarProductos(lista){
             <h5 class="card-title" id="card-h5">${product.name}</h5>
             <h4 class="card-title">${product.price}</h4>
             <p class="card-text">${product.description}</p>
-            <button id="${product.id}" class="btn btn-primary compra">Agregar al carrito</button>
+            <button id=${product.id} class="btn btn-primary compra">Agregar al carrito</button>
             </div>
         </div>
-        `
+        `;
+
     } 
 }
 
@@ -63,7 +72,6 @@ function encontrarProductoNombre(){
         const encontrado = producto.filter((producto)=> producto.name.toUpperCase().includes(nombreIngresado.toUpperCase()))
         if(encontrado){
             renderizarProductos(encontrado)
-            console.log("nombreIngresado")
         }
     }
 
@@ -72,6 +80,7 @@ function encontrarProductoNombre(){
 function borrarFiltros(){
     contenedorBusqueda.value = ''
     renderizarProductos(producto)
+    //obtenerJsonProds()
 }
 
 
@@ -93,4 +102,12 @@ function enviarDatosLogin(){
             alert('credencial invalida')
         }
     }
+}
+
+async function obtenerJsonProds(){
+    const URLJSON = '/productos.json';
+    const respuesta = await fetch(URLJSON);
+    const data = await respuesta.json();
+    producto = data;
+    renderizarProductos(producto);
 }

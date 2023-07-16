@@ -1,0 +1,40 @@
+[
+{
+    "id":1,
+    "name":"God of war",
+    "price":3000,
+    "description":"Únete a Kratos y Atreus en un viaje mítico en busca de respuestas antes de que llegue el Ragnarök. Juntos, padre e hijo deben darlo todo mientras visitan cada uno de los nueve reinos. A través de imponentes paisajes mitológicos",
+    "image":"https://stylewatch.vtexassets.com/arquivos/ids/224923-800-800?v=638110468992370000&width=800&height=800&aspect=true",
+    "cantidad":1
+},{
+    "id":2,
+    "name":"ASSASSINS CREED VALHALLA",
+    "price":150000,
+    "description":"En Assassins Creed® Valhalla, encarnarás a Eivor, una feroz leyenda vikinga criada entre historias de batallas y gloria. Explora un hermoso mundo abierto y cambiante ambientado en la despiadada Inglaterra de los años oscuros",
+    "image":"https://image.smythstoys.com/zoom/189876.jpg",
+    "cantidad":1 
+},{
+    "id":3,
+    "name":"Call of Duty Modern Warfare II",
+    "price":5000,
+    "description":"Infinity Ward ofrece a los fans una experiencia puntera con un manejo nuevo, un sistema de IA avanzado",
+    "image":"https://cdn.shopify.com/s/files/1/0654/6112/5359/products/269897007.jpg?v=1663160783&width=360",
+    "cantidad":1 
+    },
+    {
+        "id":4,
+        "name":"Ghost",
+        "price":15000,
+        "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        "image":"https://medias.musimundo.com/medias/00294025-327242-327242-01-327242-01.jpg-size300?context=bWFzdGVyfGltYWdlc3w3MDY4NHxpbWFnZS9qcGVnfGhiMS9oY2YvMTAyMzM3MDUxMDMzOTAvMDAyOTQwMjUtMzI3MjQyLTMyNzI0Ml8wMS0zMjcyNDJfMDEuanBnX3NpemUzMDB8ZWJkMmJhYjljMjc4NGU2YjY4YjM1OTAwZWRhOTNmNjU0YWUyNzFiZGM0YTk0M2MyNWMxYjU0NTBiZmU0MDgzYQ",
+        "cantidad":1 
+    },{
+    "id":5,
+    "name":"Red Read Redemption",
+    "price":2300,
+    "description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "image":"https://http2.mlstatic.com/D_NQ_NP_667696-MLA46792682054_072021-O.webp",
+    "cantidad":1 
+}
+
+]
